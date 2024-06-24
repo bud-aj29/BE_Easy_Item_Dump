@@ -1,0 +1,342 @@
+{
+  "namespace": "pocket_containers",
+
+  "ez_dump_image_from_chest": {
+    "type": "image",
+    "layer": 1,
+    "texture": "textures/ez_dump_from_chest_pocket",
+    "size": [ 24, 8 ],
+    "alpha": 1.0
+  },
+  "ez_dump_image_from_inventory": {
+    "type": "image",
+    "layer": 1,
+    "texture": "textures/ez_dump_from_inventory_pocket",
+    "size": [ 24, 8 ],
+    "alpha": 1.0
+  },
+  "ez_dump_image_from_chest_filtered": {
+    "type": "image",
+    "layer": 1,
+    "texture": "textures/ez_dump_from_chest_pocket_filtered",
+    "size": [ 24, 8 ],
+    "alpha": 1.0
+  },
+  "ez_dump_image_from_inventory_filtered": {
+    "type": "image",
+    "layer": 1,
+    "texture": "textures/ez_dump_from_inventory_pocket_filtered",
+    "size": [ 24, 8 ],
+    "alpha": 1.0
+  },
+
+  "ez_dump_button_panel": {
+    "$pressed_button_name": "unset_button_name",
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 30, 15 ],
+    "layer": 6,
+    "controls": [
+      {
+        "stack_panel_1": {
+          "type": "stack_panel",
+          "size": [ 15, 15 ],
+          "offset": [ -7.5, 0 ],
+	  "collection_name": "$item_location",
+          "property_bag": {
+            "#size": "$container_slot_count"
+          },
+          "factory": {
+	    "control_name": "$factory_selection"
+          },
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "#size",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "stack_panel_2": {
+          "type": "stack_panel",
+          "size": [ 15, 15 ],
+          "offset": [ 7.5, 0 ],
+	  "collection_name": "$item_location",
+          "property_bag": {
+            "#size": "$container_slot_count"
+          },
+          "factory": {
+	    "control_name": "$factory_selection"
+          },
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "#size",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "button@common_buttons.light_glyph_button": {
+          "$default_glyph_color": "$light_glyph_hover_color",
+          "layer": -1
+        }
+      }
+    ]
+  },
+
+  "ez_dump_factory_chest": {
+    "type": "panel",  
+    "size": [ "100%", 0 ],
+    "controls": [
+      {
+        "input_panel": {
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "focused",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#item_id_aux=-1))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ez_dump_factory_chest_filtered": {
+    "type": "panel",  
+    "size": [ "100%", 0 ],
+    "controls": [
+      {
+        "input_panel": {
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "focused",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#inventory_selected_item",
+              "binding_name_override": "#filter"
+            },
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#item_id_aux=#filter)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ez_dump_factory_inventory": {
+    "type": "panel",  
+    "size": [ "100%", 0 ],
+    "controls": [
+      {
+        "input_panel": {
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "focused",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#item_id_aux=-1) and (#collection_index>8))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ez_dump_factory_inventory_filtered": {
+    "type": "panel",  
+    "size": [ "100%", 0 ],
+    "controls": [
+      {
+        "input_panel": {
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "focused",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#inventory_selected_item",
+              "binding_name_override": "#filter"
+            },
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#item_id_aux=#filter)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  //insert button panel into vanilla ui screens
+  "inventory_panel": {
+    "$container_slot_count": 54,
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": {
+          "from_chest@pocket_containers.ez_dump_button_panel": {
+	    "$item_location": "container_items",
+	    "$button_content": "pocket_containers.ez_dump_image_from_chest",
+	    "$factory_selection": "pocket_containers.ez_dump_factory_chest",
+	    "offset": [ 0, -27 ]
+	  }
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": {
+          "from_inventory@pocket_containers.ez_dump_button_panel": {
+	    "$item_location": "combined_hotbar_and_inventory_items",
+	    "$button_content": "pocket_containers.ez_dump_image_from_inventory",
+	    "$factory_selection": "pocket_containers.ez_dump_factory_inventory",
+	    "offset": [ 30, -27 ]
+	  }
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": {
+          "from_chest_filtered@pocket_containers.ez_dump_button_panel": {
+	    "$item_location": "container_items",
+	    "$button_content": "pocket_containers.ez_dump_image_from_chest_filtered",
+	    "$factory_selection": "pocket_containers.ez_dump_factory_chest_filtered",
+	    "offset": [ 130, -27 ]
+	  }
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": {
+          "from_inventory_filtered@pocket_containers.ez_dump_button_panel": {
+	    "$item_location": "combined_hotbar_and_inventory_items",
+	    "$button_content": "pocket_containers.ez_dump_image_from_inventory_filtered",
+	    "$factory_selection": "pocket_containers.ez_dump_factory_inventory_filtered",
+	    "offset": [ 160, -27 ]
+	  }
+        }
+      }
+    ]
+  }
+}

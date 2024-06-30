@@ -45,9 +45,10 @@
           "offset": [ -7.5, 0 ],
 	  "collection_name": "$item_location",
           "property_bag": {
-            "#size": "$container_slot_count"
+            "#size": 54
           },
           "factory": {
+	    "name": "ez_dump_button_panel_factory_1",
 	    "control_name": "$factory_selection"
           },
           "bindings": [
@@ -66,9 +67,10 @@
           "offset": [ 7.5, 0 ],
 	  "collection_name": "$item_location",
           "property_bag": {
-            "#size": "$container_slot_count"
+            "#size": 54
           },
           "factory": {
+	    "name": "ez_dump_button_panel_factory_2",
 	    "control_name": "$factory_selection"
           },
           "bindings": [
@@ -90,7 +92,7 @@
   },
 
   "ez_dump_factory_chest": {
-    "type": "panel",  
+    "type": "panel",
     "size": [ "100%", 0 ],
     "controls": [
       {
@@ -111,7 +113,7 @@
             {
               "from_button_id": "button.menu_ok",
               "to_button_id": "button.container_auto_place",
-              "mapping_type": "focused",
+              "mapping_type": "pressed",
               "consume_event": false
             }
           ],
@@ -137,11 +139,12 @@
   },
 
   "ez_dump_factory_chest_filtered": {
-    "type": "panel",  
+    "type": "panel",
     "size": [ "100%", 0 ],
     "controls": [
       {
         "input_panel": {
+	  "ignored": "$touch",
           "type": "input_panel",
 	  "visible": false,
           "size": [ "100%", "100%x" ],
@@ -153,12 +156,6 @@
               "from_button_id": "button.menu_select",
               "to_button_id": "button.container_auto_place",
               "mapping_type": "pressed",
-              "consume_event": false
-            },
-            {
-              "from_button_id": "button.menu_ok",
-              "to_button_id": "button.container_auto_place",
-              "mapping_type": "focused",
               "consume_event": false
             }
           ],
@@ -183,12 +180,94 @@
             }
           ]
         }
+      },
+      {
+        "input_panel_touch": {
+	  "ignored": "(not $touch)",
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection",
+	      "binding_name": "#item_id_aux",
+	      "binding_name_override": "#filter",
+              "binding_collection_name": "hotbar_items"
+            },
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#item_id_aux=#filter)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "input_panel_controller": {
+	  "ignored": "$touch",
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection",
+	      "binding_name": "#item_id_aux",
+	      "binding_name_override": "#filter",
+              "binding_collection_name": "hotbar_items"
+            },
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#item_id_aux=#filter)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
       }
     ]
   },
 
   "ez_dump_factory_inventory": {
-    "type": "panel",  
+    "type": "panel",
     "size": [ "100%", 0 ],
     "controls": [
       {
@@ -209,7 +288,7 @@
             {
               "from_button_id": "button.menu_ok",
               "to_button_id": "button.container_auto_place",
-              "mapping_type": "focused",
+              "mapping_type": "pressed",
               "consume_event": false
             }
           ],
@@ -235,11 +314,12 @@
   },
 
   "ez_dump_factory_inventory_filtered": {
-    "type": "panel",  
+    "type": "panel",
     "size": [ "100%", 0 ],
     "controls": [
       {
         "input_panel": {
+	  "ignored": "$touch",
           "type": "input_panel",
 	  "visible": false,
           "size": [ "100%", "100%x" ],
@@ -251,12 +331,6 @@
               "from_button_id": "button.menu_select",
               "to_button_id": "button.container_auto_place",
               "mapping_type": "pressed",
-              "consume_event": false
-            },
-            {
-              "from_button_id": "button.menu_ok",
-              "to_button_id": "button.container_auto_place",
-              "mapping_type": "focused",
               "consume_event": false
             }
           ],
@@ -281,13 +355,93 @@
             }
           ]
         }
+      },
+      {
+        "input_panel_touch": {
+	  "ignored": "(not $touch)",
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection",
+	      "binding_name": "#item_id_aux",
+	      "binding_name_override": "#filter",
+              "binding_collection_name": "hotbar_items"
+            },
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#item_id_aux=#filter)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "input_panel_controller": {
+	  "ignored": "$touch",
+          "type": "input_panel",
+	  "visible": false,
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection",
+	      "binding_name": "#item_id_aux",
+	      "binding_name_override": "#filter",
+              "binding_collection_name": "hotbar_items"
+            },
+            {
+	      "binding_type": "collection",
+              "binding_name": "#item_id_aux",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$item_location"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#item_id_aux=#filter)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
       }
     ]
   },
 
-  //insert button panel into vanilla ui screens
   "inventory_panel": {
-    "$container_slot_count": 54,
     "modifications": [
       {
         "array_name": "controls",
@@ -321,7 +475,7 @@
 	    "$item_location": "container_items",
 	    "$button_content": "pocket_containers.ez_dump_image_from_chest_filtered",
 	    "$factory_selection": "pocket_containers.ez_dump_factory_chest_filtered",
-	    "offset": [ 130, -27 ]
+	    "offset": [ "85%-30px", -27 ]
 	  }
         }
       },
@@ -333,7 +487,7 @@
 	    "$item_location": "combined_hotbar_and_inventory_items",
 	    "$button_content": "pocket_containers.ez_dump_image_from_inventory_filtered",
 	    "$factory_selection": "pocket_containers.ez_dump_factory_inventory_filtered",
-	    "offset": [ 160, -27 ]
+	    "offset": [ "85%", -27 ]
 	  }
         }
       }

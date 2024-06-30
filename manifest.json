@@ -2,24 +2,24 @@
   "format_version": 2,
   "header": {
     "description": "Easily transfer items from inventory to containers",
-    "name": "Easy_Item_Dump_v0.0.3",
-    "uuid": "bff78fba-406f-4b26-a482-dab8234c98e0",
+    "name": "Easy_Item_Dump_v0.0.4",
+    "uuid": "8af8b07a-90cd-480a-a122-4c52669d5ce8",
     "version": [
       0,
       0,
-      3
+      4
     ],
     "min_engine_version": [
       1,
-      20,
-      80
+      21,
+      0
     ]
   },
   "modules": [
     {
       "description": "",
       "type": "resources",
-      "uuid": "22565662-f658-45fc-a970-d6df4e1f58fb",
+      "uuid": "377636dd-c25a-4344-970b-452edf36f961",
       "version": [
         0,
         0,
